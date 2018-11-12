@@ -1,0 +1,59 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Pushmysite</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="{% static 'css/base.css' %}"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}"  media="screen,projection"/>
+</head>
+<body>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">
+                <img src="{% static 'logo.png' %}" alt="logo"> 
+            PushMySite
+            </a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+            {% if user.is_authenticated %}
+            <li><a href="javascript:{document.getElementById('logout').submit()}">Logout</a></li>
+            <form id="logout" method="POST" action="{% url 'logout' %}" type="hidden">
+                {% csrf_token %}
+            </form>
+            {% else %}
+            <li><a href="{% url 'signup' %}">Sign Up</a></li>
+            <li><a href="{% url 'login' %}">Login</a></li>
+            {% endif %}
+            </ul>
+        </div>
+    </nav>
+    <main>
+        {% block content %}
+
+        {% endblock %}
+    </main>
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+            <div class="col l6 s12 offset-l4">
+                <h5 class="white-text">Made with
+                    <img src="{% static 'love.png' %}" alt="love" height="25" width="25">
+                in Sydney    
+                </h5>
+                <p class="grey-text text-lighten-4">A place where people can express themselves to the world!</p>
+            </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+            © 2018-2019
+            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            </div>
+        </div>
+    </footer>
+    <script type="text/javascript" src="{% static 'js/materialize.min.js'%}"></script>
+</body>
+</html>
