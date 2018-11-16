@@ -3,22 +3,21 @@
 {% block content %}
 
 {% if error %}
-{{error}}
-<br>
-<br>
+    <h2 class="center-align" style="color:red;">{{error}}</h2>
 {% endif %}
 
-<h1>Login</h1>
-<form method="POST" action="{% url 'login' %}">
-    {% csrf_token %}
-    Username:
-    <br>
-    <input type="text" name="username">
-    <br>
-     Password:
-     <br>
-     <input type="password" name="password">
-     <br>
-     <input class="btn waves-effect waves-light" type="submit" value="Login">
-</form>
+<div class="center-align" style="color:#999; height: 60vh; display: flex;">
+    <form method="POST" action="{% url 'login' %}" style="width:15%; margin:auto;">
+        {% csrf_token %}
+        Username:
+        <br>
+        <input type="text" name="username">
+        <br>
+        Password:
+        <br>
+        <input type="password" name="password">
+        <br>
+        <input class="btn waves-effect waves-light" style="background-color:#EE6E73;" type="submit" value="Login">
+    </form>
+</div>
 {% endblock %}

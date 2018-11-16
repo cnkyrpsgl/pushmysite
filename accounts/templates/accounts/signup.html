@@ -3,25 +3,25 @@
 {% block content %}
 
 {% if error %}
-{{error}}
-<br>
-<br>
+<h2 class="center-align" style="color:red;">{{error}}</h2>
 {% endif %}
 
-<h1>Sign Up!</h1>
-<form method="POST" action="{% url 'signup' %}">
-    {% csrf_token %}
-    Username:
-    <br>
-    <input type="text" name="username">
-    <br>
-     Password:
-     <br>
-     <input type="password" name="password1">
-     <br>
-     Confirm Password:
-     <br>
-     <input type="password" name="password2">
-     <input class="btn waves-effect waves-light" type="submit" value="Sign Up!">
-</form>
+<div class="center-align" style="color:#999;">
+    <h2>Sign up to push your site!</h2>
+    <form method="POST" action="{% url 'signup' %}" style="width:15%; margin:auto;">
+        {% csrf_token %}
+        Username:
+        <br>
+        <input type="text" name="username">
+        <br>
+        Password:
+        <br>
+        <input type="password" name="password1">
+        <br>
+        Confirm Password:
+        <br>
+        <input type="password" name="password2">
+        <input class="btn waves-effect waves-light" style="background-color:#EE6E73;" type="submit" value="Sign Up!">
+    </form>
+</div>
 {% endblock %}

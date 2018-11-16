@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if error %}
+{{error}}
+<br>
+<br>
+{% endif %}
+
+<div class="center-align" style="color:#999;">
+    <h2>Push your website here!</h2>
+    <form method="POST" action="{% url 'create' %}" enctype="multipart/form-data" style="width:50%; margin:auto;">
+        {% csrf_token %}
+        Title:
+        <br>
+        <input type="text" name="title">
+        <br>
+        Description:
+        <br>
+        <textarea name="body" id="body" style="height:20vh;"></textarea>
+        <br>
+        URL:
+        <br>
+        <input type="text" name="url">
+        <br>
+        Icon:
+        <br>
+        <br>
+        <input type="file" name="icon">
+        <br>
+        <br>
+        Image:
+        <br>
+        <br>
+        <input type="file" name="image">
+        <br>
+        <br>
+        <input class="btn waves-effect waves-light" style="background-color:#EE6E73;" type="submit" value="Add Site">
+        <br>
+        <br>
+    </form>
+</div>
+{% endblock %}

@@ -14,9 +14,13 @@
     </div>
     <hr style="visibility:hidden;">
     <div class="right">
-        <a href="javascript:{document.getElementById('upvote{{ product.id }}').submit()}"><button class="btn waves-effect waves-light" style="background-color:#EE6E73;"><i class="material-icons">arrow_drop_up</i>Upvote {{ product.cnt }}</button></a>
+        <a href="javascript:{document.getElementById('edit{{ product.id }}').submit()}"><button class="btn waves-effect waves-light" style="background-color:#EE6E73;"><i class="material-icons">edit</i></button></a>
+        <a href="javascript:{document.getElementById('delete{{ product.id }}').submit()}"><button class="btn waves-effect waves-light" style="background-color:#EE6E73;"><i class="material-icons">delete</i></button></a>
     </div>
-    <form id="upvote{{ product.id }}" action="{% url 'upvote' product.id %}" method="POST" type="hidden">
+    <form id="delete{{ product.id }}" action="{% url 'delete' product.id %}" method="POST" type="hidden">
+        {% csrf_token %}
+    </form>
+    <form id="edit{{ product.id }}" action="{% url 'edit' product.id %}" method="GET" type="hidden">
         {% csrf_token %}
     </form>
 </div>

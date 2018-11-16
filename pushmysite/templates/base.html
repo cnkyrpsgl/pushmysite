@@ -7,19 +7,22 @@
     <title>Pushmysite</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="{% static 'css/base.css' %}"  media="screen,projection"/>
     <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'css/base.css' %}"  media="screen,projection"/>
 </head>
 <body>
     <nav>
-        <div class="nav-wrapper">
-            <a href="#" class="brand-logo">
-                <img src="{% static 'logo.png' %}" alt="logo"> 
-            PushMySite
+        <div class="nav-wrapper" style="margin-left:10%; margin-right:10%;">
+            <a href="{% url 'home' %}" class="brand-logo">
+                <img src="{% static 'logo.png' %}" alt="logo" height="50" width="50" style="vertical-align:bottom;"> 
+                <span style="vertical-align: top;">PushMySite</span>
             </a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <ul id="nav-mobile" class="right">
             {% if user.is_authenticated %}
+            <li><a href="{% url 'mysites' %}">My Sites</a></li>
+            <li><a href="{% url 'create' %}"><i class="material-icons">add</i></a></li>
             <li><a href="javascript:{document.getElementById('logout').submit()}">Logout</a></li>
+            <li>Welcome {{ user.username }}</li>
             <form id="logout" method="POST" action="{% url 'logout' %}" type="hidden">
                 {% csrf_token %}
             </form>
@@ -38,7 +41,7 @@
     <footer class="page-footer">
         <div class="container">
             <div class="row">
-            <div class="col l6 s12 offset-l4">
+            <div class="col s12 center-align">
                 <h5 class="white-text">Made with
                     <img src="{% static 'love.png' %}" alt="love" height="25" width="25">
                 in Sydney    
@@ -49,8 +52,10 @@
         </div>
         <div class="footer-copyright">
             <div class="container">
-            © 2018-2019
-            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            © 2018-2019, PushMySite, All rights reserved. 
+            <a class="grey-text text-lighten-4 right" href="https://github.com/cnkyzz">
+                <img src="{% static 'github.png' %}" alt="github" height="25" width="25">
+            </a>
             </div>
         </div>
     </footer>
